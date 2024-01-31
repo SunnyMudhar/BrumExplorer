@@ -1,0 +1,17 @@
+:root {
+
+}
+
+/*Nav*/
+.customNav {
+    
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    --bs-bg-opacity: 0 !important;
+}
+
+.navbar-collapse {
+    display: flex !important;
+    justify-content: center;
+}

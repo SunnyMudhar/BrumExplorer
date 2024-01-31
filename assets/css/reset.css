@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    height: 100%;
+  }
+  
+  body {
+    min-height: 100%;
+    line-height: 1;
+    font-family: sans-serif;
+  }
+  
+  input,
+  select,
+  option,
+  optgroup,
+  textarea,
+  button,
+  pre,
+  code {
+    font-size: 100%;
+    font-family: inherit;
+  }
+  
+  ol,
+  ul {
+    list-style: none;
+    margin-bottom: 0; /*_reboot.scss from bootstrap adding a bottom margin on lists... needed to remove*/
+  }
+
+  p {
+    margin: 0;
+  }
