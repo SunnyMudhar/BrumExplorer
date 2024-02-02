@@ -1,16 +1,79 @@
 :root {
-
+    --primaryColor: #D9D9D9; /*For Nav bar, boxes etc*/
+    --secondaryColor: #8a2be2; /*Cards, some text*/
+    --textColor: #D9D9D9;
+    --birminghamBlue: #003049; 
 }
 
 /*Nav*/
-.customNav {
+.custom-nav {
     /*position: absolute;*/
     width: 100%;
     z-index: 10;
-    --bs-bg-opacity: 0 !important;
+    background-color: var(--primaryColor) !important;
 }
 
-.navbar-collapse {
-    display: flex !important;
+.navbar-nav {
+    margin: auto;
+}
+
+.nav-link {
+    color: var(--textColour);
+    --bs-nav-link-hover-color: var(--secondaryColor);
+}
+
+/*main*/
+
+/*-banner-*/
+.banner-main {
+    display: flex;
+    background-image: url(../images/dining-out.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: center;
     justify-content: center;
+    margin-top: -1%;
+    height: 100%;
+}
+
+.banner-content {
+    color: var(--secondaryColor);
+    text-align: center;
+}
+
+/* .banner-content,
+.p
+.h1 {
+    borde
+} */
+
+.btn {
+    margin-top: 10px;
+    padding: 10px 25px;
+    border-radius: 300px;
+    color: var(--primaryColor);
+}
+  
+.btn-outline {
+    border: 1.5px solid;
+    border-color: var(--primaryColor);
+}
+  
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active,
+.btn-outline.active {
+    color: var(--primaryColor);
+    border-color: var(--secondaryColor);
+    background-color: var(--secondaryColor);
+}
+
+/*carousel*/
+.card-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 18rem;
 }

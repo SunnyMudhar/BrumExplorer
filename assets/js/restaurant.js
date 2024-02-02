@@ -1,3 +1,9 @@
+var submitBtn = document.getElementById('dining');
+submitBtn.addEventListener('click', displayRestaurants);
+
+var i = 0;
+var setActive = false;
+
 // Function to fetch and display restaurant data
 function displayRestaurants() {
   const url = 'https://restaurants222.p.rapidapi.com/search';
@@ -30,20 +36,37 @@ function displayRestaurants() {
       console.log('Response data:', data);
 
       // specified where i want the data to be appended 
-      const restaurantCardsContainer = document.getElementById('restaurantCards');
+      const carouselContainer = document.getElementById('carousel-container');
+      var cardWrapper = "";
 
       if (data && data.results && data.results.data && Array.isArray(data.results.data)) {
         // Create and append cards for each restaurant
         data.results.data.forEach(restaurant => {
+          if(i === 0) {
+            const carouselItem = document.createElement('div');
+            carouselItem.classList.add('carousel-item');
+          
+            if (!setActive) {
+              carouselItem.classList.add('active');
+              setActive = true;
+            }
+          
+            carouselContainer.appendChild(carouselItem);
+          
+            cardWrapper = document.createElement('div');
+            cardWrapper.classList.add('card-wrapper');
+          
+            carouselItem.appendChild(cardWrapper);
+            i = 3;
+          }
+          i--;
           const card = document.createElement('div');
           card.classList.add('card', 'm-3');
-          card.style = 'width: 18rem;';
-
-         
-          const imageUrl = restaurant.image_url || 'https://via.placeholder.com/150';
+   
+          const imageUrl = restaurant.photo.images.small.url || 'https://via.placeholder.com/150';
 
           card.innerHTML = `
-            <img src="${restaurant.photo.images.small.url}" class="card-img-top" alt="${restaurant.name}">
+            <img src="${imageUrl}" class="card-img-top" alt="${restaurant.name}">
             <div class="card-body">
               <h5 class="card-title">${restaurant.name}</h5>
               <p class="card-text">${restaurant.description}</p>
@@ -58,7 +81,7 @@ function displayRestaurants() {
             </div>
           `;
 
-          restaurantCardsContainer.appendChild(card);
+          cardWrapper.appendChild(card);
         });
       } else {
         console.error('Data structure is not as expected:', data);
@@ -68,6 +91,3 @@ function displayRestaurants() {
       console.error('Fetch error:', error);
     });
 }
-
-// Event listener for loading the restaurants when the page is loaded
-document.addEventListener('DOMContentLoaded', displayRestaurants);
