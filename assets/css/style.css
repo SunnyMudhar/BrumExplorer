@@ -1,16 +1,170 @@
 :root {
+  --yellow: #FCBF49;
+  --red: #D62828;
+  --orange: #F77F00;
+  --navy: #003049;
 
 }
 
-/*Nav*/
-.customNav {
-    /*position: absolute;*/
-    width: 100%;
-    z-index: 10;
-    --bs-bg-opacity: 0 !important;
+body {
+  height: 100%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px;
+  color: var(--navy);
+  text-align: justify;
+  line-height: 20px;
+}
+
+/* Navbar*/
+.container-fluid {
+  background-color: var(--yellow);
+
+}
+
+.navbar {
+  --bs-navbar-padding-x: none;
+}
+
+.navbar-nav a:hover {
+  color: var(--red);
+  text-decoration: underline;
+  transition: all 0.35s;
+
 }
 
 .navbar-collapse {
-    display: flex !important;
-    justify-content: center;
+  display: flex !important;
+  justify-content: center;
+}
+
+.container-fluid img {
+  height: 70px;
+
+}
+
+/* hero image styling */
+
+.hero-text {
+  background-image: url(/assets/images/about.jpg);
+  object-fit: cover;
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px;
+  position: relative;
+
+}
+
+.hero-text h1 {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--navy);
+  font-weight: bold;
+}
+
+.hero-text p {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--navy);
+  font-weight: bold
+}
+
+
+/* about Birmingham section */
+.aboutBham {
+  background-image: url(/assets/images/brumi.jpg);
+  height: 100vh;
+  width: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+
+.section-heading {
+  text-align: center;
+  position: relative;
+  padding-top: 40vh;
+  height: 100vh;
+  width: 30vw;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--yellow);
+  font-weight: bold;
+}
+
+.section-heading h2 {
+  text-align: center;
+  padding: 10px;
+  height: -50vh;
+}
+
+.section-heading p {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.section-heading button {
+
+  width: 100px;
+  height: 40px;
+  display: inline-block;
+  position: relative;
+  background-color: var(--orange);
+  color: var(--navy);
+  padding: 10px;
+}
+
+
+/* testimonials sections */
+.row {
+  background-color: var(--yellow);
+  padding: 20px;
+  margin-right: 0;
+}
+
+.card {
+  border-color: var(--red);
+  border-width: 3px;
+}
+
+
+/* contact */
+
+.contact-section {
+  background-color: var(--yellow);
+}
+
+.text-uppercase:hover {
+  color: var(--orange);
+  text-shadow: 2px;
+  text-decoration: underline;
+  transition: all 0.35s;
+}
+
+.small a {
+  color: var(--red);
+}
+
+.small a:hover {
+  color: var(--navy);
+  text-shadow: 10px;
+  text-decoration: underline;
+  transition: all 0.35s;
+}
+
+
+/* footer */
+.footer {
+  background-color: var(--red);
+  color: var(--yellow);
+  text-align: center;
+  padding: 5px;
 }
