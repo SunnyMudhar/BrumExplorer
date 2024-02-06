@@ -1,40 +1,62 @@
 :root {
-    --primaryColor: #D9D9D9; /*For Nav bar, boxes etc*/
-    --secondaryColor: #D62828; /*Cards, some text*/
-    --textColor: #D9D9D9;
-    --birminghamBlue: #003049;
-    --yardleyYellow: #FCBF49;
-    --bartleyGreen: #76DA6E;
-    --orange: #F77F00;
+
+  --primaryColor: #D9D9D9;
+  --textColor: #D9D9D9; /*REMOVE FOR PRIMARY*/
+  --yardleyYellow: #FCBF49;
+  --secondaryColor: #D62828;
+  --orange: #F77F00;
+  --birminghamBlue: #003049;
+  --bartleyGreen: #76DA6E;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-p {
-    font-family: "Montserrat", sans-serif;
+body {
+  height: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  color: var(--birminghamBlue);
+  text-align: justify;
+  line-height: 20px;
 }
 
-/*HEADER*/
+/* Navbar*/
+.navbar .container-fluid {
+  background-color: var(--yardleyYellow);
+}
 
-/*Nav*/
-.custom-nav {
-    /*position: absolute;*/
-    width: 100%;
-    z-index: 10;
-    background-color: var(--primaryColor) !important;
+.navbar {
+  --bs-navbar-padding-x: none;
 }
 
 .navbar-nav {
     margin: auto;
 }
 
-.nav-link {
-    color: var(--textColour);
-    --bs-nav-link-hover-color: var(--secondaryColor);
+.navbar-nav a:hover {
+  color: var(--secondaryColor);
+  text-decoration: underline;
+  transition: all 0.35s;
+
 }
+
+.navbar .container-fluid img {
+  height: 70px;
+}
+
+/* hero image styling */
+
+.hero-text {
+  background-image: url(/assets/images/about.jpg);
+  object-fit: cover;
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px;
+  position: relative;
+
+}
+
 
 /*MAIN*/
 
@@ -48,32 +70,76 @@ p {
     justify-content: center;
     margin-top: -1%;
     margin-bottom: 0 !important;
+
+.hero-text h1 {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--birminghamBluen);
+  font-weight: bold;
 }
 
-.banner-content {
-    color: var(--secondaryColor);
-    text-align: center;
+.hero-text p {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--birminghamBlue);
+  font-weight: bold
 }
-
-.btn {
+  
+  .btn {
     margin-top: 10px;
     padding: 10px 25px;
     border-radius: 300px;
     color: var(--primaryColor);
+  }
+
+/* about Birmingham section */
+.aboutBham {
+  background-image: url(/assets/images/brumi.jpg);
+  height: 100vh;
+  width: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
 }
-  
-.btn-outline {
-    border: 1.5px solid;
-    border-color: var(--primaryColor);
+
+.section-heading {
+  text-align: center;
+  position: relative;
+  padding-top: 40vh;
+  height: 100vh;
+  width: 30vw;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--yardleyYellow);
+  font-weight: bold;
 }
-  
-.btn-outline:hover,
-.btn-outline:focus,
-.btn-outline:active,
-.btn-outline.active {
-    color: var(--primaryColor);
-    border-color: var(--secondaryColor);
-    background-color: var(--secondaryColor);
+
+.section-heading h2 {
+  text-align: center;
+  padding: 10px;
+  height: -50vh;
+
+}
+
+.section-heading p {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.section-heading button {
+
+  width: 100px;
+  height: 40px;
+  display: inline-block;
+  position: relative;
+  background-color: var(--orange);
+  color: var(--birminghamBlue);
+  padding: 10px;
 }
 
 /*Search Filters*/
@@ -138,3 +204,48 @@ p {
         display: none;
     }
 }
+
+
+/* testimonials sections */
+.row {
+  background-color: var(--yardleyYellow);
+  padding: 20px;
+  margin-right: 0;
+}
+
+.card {
+  border-color: var(--secondaryColor);
+  border-width: 3px;
+}
+
+
+/* contact */
+
+.contact-section {
+  background-color: var(--yardleyYellow);
+}
+
+.text-uppercase:hover {
+  color: var(--orange);
+  text-shadow: 2px;
+  text-decoration: underline;
+  transition: all 0.35s;
+}
+
+.small a {
+  color: var(--secondaryColor);
+}
+
+.small a:hover {
+  color: var(--birminghamBlue);
+  text-shadow: 10px;
+  text-decoration: underline;
+  transition: all 0.35s;
+}
+  
+/* footer */
+.footer {
+  background-color: var(--secondaryColor);
+  color: var(--yardleyYellow);
+  text-align: center;
+  padding: 5px;
