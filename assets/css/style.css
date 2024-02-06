@@ -1,45 +1,44 @@
 :root {
-  --yellow: #FCBF49;
-  --red: #D62828;
+  --primaryColor: #D9D9D9;
+  --textColor: #D9D9D9; /*REMOVE FOR PRIMARY*/
+  --yardleyYellow: #FCBF49;
+  --secondaryColor: #D62828;
   --orange: #F77F00;
-  --navy: #003049;
-
+  --birminghamBlue: #003049;
+  --bartleyGreen: #76DA6E;
 }
 
 body {
   height: 100%;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 18px;
-  color: var(--navy);
+  color: var(--birminghamBlue);
   text-align: justify;
   line-height: 20px;
 }
 
 /* Navbar*/
-.container-fluid {
-  background-color: var(--yellow);
-
+.navbar .container-fluid {
+  background-color: var(--yardleyYellow);
 }
 
 .navbar {
   --bs-navbar-padding-x: none;
 }
 
+.navbar-nav {
+    margin: auto;
+}
+
 .navbar-nav a:hover {
-  color: var(--red);
+  color: var(--secondaryColor);
   text-decoration: underline;
   transition: all 0.35s;
 
 }
 
-.navbar-collapse {
-  display: flex !important;
-  justify-content: center;
-}
-
-.container-fluid img {
+.navbar .container-fluid img {
   height: 70px;
-
 }
 
 /* hero image styling */
@@ -63,7 +62,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--navy);
+  color: var(--birminghamBluen);
   font-weight: bold;
 }
 
@@ -72,7 +71,7 @@ body {
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--navy);
+  color: var(--birminghamBlue);
   font-weight: bold
 }
 
@@ -96,7 +95,7 @@ body {
   width: 30vw;
   margin-left: auto;
   margin-right: auto;
-  color: var(--yellow);
+  color: var(--yardleyYellow);
   font-weight: bold;
 }
 
@@ -118,20 +117,20 @@ body {
   display: inline-block;
   position: relative;
   background-color: var(--orange);
-  color: var(--navy);
+  color: var(--birminghamBlue);
   padding: 10px;
 }
 
 
 /* testimonials sections */
 .row {
-  background-color: var(--yellow);
+  background-color: var(--yardleyYellow);
   padding: 20px;
   margin-right: 0;
 }
 
 .card {
-  border-color: var(--red);
+  border-color: var(--secondaryColor);
   border-width: 3px;
 }
 
@@ -139,7 +138,7 @@ body {
 /* contact */
 
 .contact-section {
-  background-color: var(--yellow);
+  background-color: var(--yardleyYellow);
 }
 
 .text-uppercase:hover {
@@ -150,11 +149,11 @@ body {
 }
 
 .small a {
-  color: var(--red);
+  color: var(--secondaryColor);
 }
 
 .small a:hover {
-  color: var(--navy);
+  color: var(--birminghamBlue);
   text-shadow: 10px;
   text-decoration: underline;
   transition: all 0.35s;
@@ -163,8 +162,7 @@ body {
 
 /* footer */
 .footer {
-  background-color: var(--red);
-  color: var(--yellow);
+  background-color: var(--secondaryColor);
+  color: var(--yardleyYellow);
   text-align: center;
   padding: 5px;
-}

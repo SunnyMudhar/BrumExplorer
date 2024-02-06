@@ -12,32 +12,54 @@
     <title>BrumExplorer | What to Do</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-light customNav">
+    <nav class="navbar navbar-expand-lg bg-light custom-nav">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">BrumExplorer</a>
+          <a class="navbar-brand" href="./index.html">BrumExplorer</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link" href="./about-birmingham.html">ABOUT BIRMINGHAM</a>
-              <a class="nav-link" href="./what-to-do.html">WHAT TO DO</a>
+              <li class="nav-item">
+                <a class="nav-link" href="./about-birmingham.html">ABOUT BIRMINGHAM</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./what-to-do.html">WHAT TO DO</a>
+              </li>
             </div>
           </div>
         </div>
     </nav>
     <main>
-        <!--Test button for JS team to test APIs-->
-        <section class="Test">
-            <div class="container">
-                <h2>TEST</h2>
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-12">
-                        <button>test</button>
-                    </div>
-                </div>
+        <section class="banner">
+          <div class="p-5 mb-4 bg-body-tertiary rounded-3 banner-main">
+            <div class="container-fluid py-5 banner-content">
+              <h1 class="display-5 fw-bold">What To Do</h1>
+              <p class="col-md-12 fs-4">Select from the options below to see what Birmingham has to offer!</p>
+              <button class="btn btn-outline btn-xl" id ="dining" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-result" aria-expanded="false" aria-controls="collapse-result">DINING</button>
             </div>
+          </div>
         </section>
+        <article class="results">
+          <div class="collapse" id="collapse-result">
+            <div id="carousel-results" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner" id="carousel-container">
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel-results" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel-results" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </article>
     </main>
+    <script src="./assets/js/restaurant.js"></script>
+  <!--MODAL SCRIPTS-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 </body>
 </html>
