@@ -36,24 +36,28 @@
             <div class="container-fluid py-5 banner-content">
               <h1 class="display-5 fw-bold">What To Do</h1>
               <p class="col-md-12 fs-4">Select from the options below to see what Birmingham has to offer!</p>
-              <button class="btn btn-outline btn-xl" id ="dining" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-result" aria-expanded="false" aria-controls="collapse-result">DINING</button>
+              <button class="btn btn-outline btn-xl" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-result" aria-expanded="false" aria-controls="collapse-result">DINING</button>
             </div>
           </div>
         </section>
         <article class="results">
           <div class="collapse" id="collapse-result">
-            <div id="carousel-results" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner" id="carousel-container">
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carousel-results" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carousel-results" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+            <div class="dining-filters">
+              <button class="btn-filter" id="btnTwenty">Get Top 20!</button>
+              <button class="btn-filter" id="btnRandom">Get a Random choice</button>
             </div>
+          </div>
+          <div id="carousel-results" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="carousel-container">
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-results" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel-results" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
         </article>
     </main>
