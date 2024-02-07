@@ -1,7 +1,5 @@
 :root {
-
   --primaryColor: #D9D9D9;
-  --textColor: #D9D9D9; /*REMOVE FOR PRIMARY*/
   --yardleyYellow: #FCBF49;
   --secondaryColor: #D62828;
   --orange: #F77F00;
@@ -35,7 +33,6 @@ body {
   color: var(--secondaryColor);
   text-decoration: underline;
   transition: all 0.35s;
-
 }
 
 .navbar .container-fluid img {
@@ -54,22 +51,20 @@ body {
   background-size: cover;
   padding: 20px;
   position: relative;
-
 }
-
 
 /*MAIN*/
 
 /*Banner*/
 .banner-main {
-    display: flex;
-    background-image: url(../images/dining-out.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    align-items: center;
-    justify-content: center;
-    margin-top: -1%;
-    margin-bottom: 0 !important;
+  display: flex;
+  background-image: url(../images/dining-out.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+  margin-top: -1%;
+  margin-bottom: 0 !important;
 }
 
 .hero-text h1 {
@@ -91,16 +86,16 @@ body {
   font-weight: bold
 }
   
-  .btn {
-    margin-top: 10px;
-    padding: 10px 25px;
-    border-radius: 300px;
-    color: var(--primaryColor);
-  }
+.btn {
+  margin-top: 10px;
+  padding: 10px 25px;
+  border-radius: 300px;
+  color: var(--primaryColor);
+}
 
 /* about Birmingham section */
 .aboutBham {
-  background-image: url(/assets/images/brumi.jpg);
+  background-image: url(../assets/images/brumi.jpg);
   height: 100vh;
   width: auto;
   background-size: cover;
@@ -145,67 +140,66 @@ body {
 
 /*Search Filters*/
 .dining-filters {
-    background-color: var(--bartleyGreen);
-    padding: 25px;
-    margin: auto;
+  background-color: var(--bartleyGreen);
+  padding: 25px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .btn-filter {
-    padding: 1vh;
-    text-transform: uppercase;
-    color: white;
-    border-radius: 5px;
-    background-color: var(--yardleyYellow);
-    border: none;
+  padding: 1vh;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 5px;
+  background-color: var(--yardleyYellow);
+  border: none;
+  margin: auto;
 }
 
-.btn-filter:hover,
-.btn-filter:focus,
-.btn-filter:active,
-.btn-filter.active {
-    color: var(--secondaryColor);
-    border-color: var(--orange);
-    background-color: var(--orange);
+.btn-filter:hover {
+  color: var(--secondaryColor);
+  border-color: var(--orange);
+  background-color: var(--orange);
 }
 
 /*Carousel*/
 
 #carousel-results {
-    margin-top: 5dvh;
-    display: none;
+  display: none;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: #003049;
+  background-color: #003049;
 }
 
 /*Cards*/
 
 .carousel-item .card-wrapper {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .card-results {
-    width: 30dvh;
+  width: 35dvh;
 }
 
 .card-results .card-img-top {
-    height: 10vw;
-    margin: 0 auto;
+  height: 22vh;
+  margin: 0 auto;
 }
 
 .card-results .card-img-top img {
-    max-width: 50%;
-    max-height: 50%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-@media screen and (max-width: 567px) {
-    .card:not(:first-child) {
-        display: none;
-    }
-}
+/*Random Result*/
 
+#random-result {
+  display: none;
+}
 
 /* testimonials sections */
 .row {
@@ -218,7 +212,6 @@ body {
   border-color: var(--secondaryColor);
   border-width: 3px;
 }
-
 
 /* contact */
 
@@ -250,4 +243,17 @@ body {
   color: var(--yardleyYellow);
   text-align: center;
   padding: 5px;
+}
+
+/* media queries*/
+@media screen and (max-width: 1010px) {
+  .dining-filters {
+    flex-direction: column;
+  }
+  .btn-filter {
+    margin: 1dvh;
+  }
+  .card:not(:first-child) {
+      display: none;
+  }
 }

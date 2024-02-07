@@ -1,32 +1,61 @@
 var topTwentyBtn = document.getElementById('btnTwenty');
 var randomBtn = document.getElementById('btnRandom');
+var retrieveResultsBtn = document.getElementById('btnRetrieve');
 var resultsCarousel = document.getElementById('carousel-results');
+var resultsRandom = document.getElementById('random-result');
+var carouselContainer = document.getElementById('carousel-container');
 
-var i = 0;
-var setActive = false;
+var numberOfCards    = 0;
+var delay            = 4000;
+var previousTask     = "";
+var setActive        = false;
 var restaurantObject = {};
-var delay = 3000;
+var cardWrapper      = "";
+
 
 topTwentyBtn.addEventListener('click', () => displayRestaurants("topTwenty"));
 randomBtn.addEventListener('click', () => displayRestaurants("random"));
+retrieveResultsBtn.addEventListener('click', () => displayRestaurants("retrieveResults"));
 
-// Function to fetch and display restaurant data
+// Main function that controls which function to trigger based off of the button pressed
 function displayRestaurants(filter) {
 
-  checkLocalStorage();
+  previousTask = filter;
 
-  // Delay
+  if (filter === "retrieveResults") {
+    checkLocalStorage();
+    delay = 0;
+  } else {
+    getAPIData();
+  }
+
+  // Delay function to display API data
   setTimeout( () => {
-    if (filter === "topTwenty") {
-      getTopTwenty();
-    } else if (filter === "random") {
-      getRandom();
+
+    switch (previousTask) {
+
+      case "topTwenty":
+        getTopTwenty();
+        break;
+
+      case "random":
+        getRandom();
+        break;
+
+      default:
+        console.error("Invalid Input for parm \"filter\"");
+
     }
   }, delay)
-
 }
 
-function getData() {
+/*
+*******************************
+*         API SECTION         *
+*******************************
+*/
+
+function getAPIData() {
   const url = 'https://restaurants222.p.rapidapi.com/search';
   const options = {
     method: 'POST',
@@ -53,24 +82,37 @@ function getData() {
       return response.json();
     })
     .then(data => {
-      // Save data to local storage for use in other functions and to save API calls
       restaurantObject = data;
-      saveData();
+      saveData(restaurantObject);
     })
     .catch(error => {
       console.error('Fetch error:', error);
     });
 }
 
-function saveData() {
-  localStorage.setItem("restaurantObject", JSON.stringify(restaurantObject));
+/*
+*****************************************
+*         LOCAL STORAGE SECTION         *
+*****************************************
+*/
+
+function saveData(obj) {
+  console.log("data saved");
+  localStorage.setItem("restaurantObject", JSON.stringify(obj));
+  localStorage.setItem("previousTask", previousTask);
 }
 
 function checkLocalStorage() {
-  if (!JSON.parse(localStorage.getItem("restaurantObject"))) getData();
-  delay = 0;
+  if (!localStorage.getItem("previousTask")) return false;  //Change to show a modal
   restaurantObject = JSON.parse(localStorage.getItem("restaurantObject"));
+  previousTask = localStorage.getItem("previousTask");
 }
+
+/*
+**********************************************
+*         PAGE FUNCTIONALITY SECTION         *
+**********************************************
+*/
 
 function getTopTwenty() {
 
@@ -78,63 +120,97 @@ function getTopTwenty() {
 
   console.log('Response data:', restaurantObject);
 
-  // specified where i want the data to be appended 
-  const carouselContainer = document.getElementById('carousel-container');
-  var cardWrapper = "";
-
   if (restaurantObject && restaurantObject.results && restaurantObject.results.data && Array.isArray(restaurantObject.results.data)) {
     // Create and append cards for each restaurant
-    restaurantObject.results.data.forEach(restaurant => {
-
-      if(i === 0) {
-        const carouselItem = document.createElement('div');
-        carouselItem.classList.add('carousel-item');
-          
-        if (!setActive) {
-          carouselItem.classList.add('active');
-          setActive = true;
-        }
-          
-        carouselContainer.appendChild(carouselItem);
-          
-        cardWrapper = document.createElement('div');
-        cardWrapper.classList.add('card-wrapper');
-          
-        carouselItem.appendChild(cardWrapper);
-        i = 5;  // Create 5 cards
-      }
-
-      i--;
-
-      const card = document.createElement('div');
-      card.classList.add('card', 'm-3', 'card-results');
-   
-      const imageUrl = restaurant.photo.images.small.url || 'https://via.placeholder.com/150';
-
-      card.innerHTML = `
-            <img src="${imageUrl}" class="card-img-top" alt="${restaurant.name}">
-            <div class="card-body">
-              <h5 class="card-title">${restaurant.name}</h5>
-              <p class="card-text">${restaurant.description}</p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Rating: ${restaurant.rating}</li>
-              <li class="list-group-item">Cuisine: ${restaurant.cuisine[0].name}</li>
-              <li class="list-group-item">Address: ${restaurant.address}</li>
-            </ul>
-            <div class="card-body">
-              <a href="${restaurant.website}" class="card-link" target="_blank">Visit Website</a>
-            </div>
-          `;
-
-      cardWrapper.appendChild(card);
-    });
+    restaurantObject.results.data.forEach( restaurant => createCard(restaurant, "carousel"));
   } else {
     console.error('Data structure is not as expected:', restaurantObject);
   }
 }
 
 function getRandom() {
+
+  resultsRandom.style.display = "block";
+
+  console.log('Response data:', restaurantObject);
+  
   var rnd = Math.floor(Math.random() * restaurantObject.results.data.length)
+  var restaurant = restaurantObject.results.data[rnd];
+  
   //display one card for random
+  createCard(restaurant, "single");
+}
+
+function createCard(cardData, type) {
+
+  if(type === "carousel") {
+    if(numberOfCards === 0) {
+      const carouselItem = document.createElement('div');
+      carouselItem.classList.add('carousel-item');
+        
+      if (!setActive) {
+        carouselItem.classList.add('active');
+        setActive = true;
+      }
+    
+      carouselContainer.appendChild(carouselItem);
+        
+      cardWrapper = document.createElement('div');
+      cardWrapper.classList.add('card-wrapper', 'row');
+        
+      carouselItem.appendChild(cardWrapper);
+      numberOfCards = 4;  // Create 4 cards
+    }
+  } else {
+           
+    cardWrapper = document.createElement('div');
+    cardWrapper.classList.add('card-wrapper', 'row');
+        
+    resultsRandom.appendChild(cardWrapper);
+    numberOfCards = 1;
+  }
+
+  numberOfCards--;
+
+  const card = document.createElement('div');
+  card.classList.add('card', 'm-3', 'card-results');
+
+  const imageUrl = cardData.photo.images.small.url || 'https://via.placeholder.com/150';
+
+  card.innerHTML = `
+        <img src="${imageUrl}" class="card-img-top" alt="${cardData.name}">
+        <div class="card-body">
+          <h5 class="card-title">${cardData.name}</h5>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#${cardData.location_id}-modal">
+            Description
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="${cardData.location_id}-modal" tabindex="-1" aria-labelledby="restaurantModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="restaurantModalLabel">${cardData.name} Description</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  ${cardData.description}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Rating: ${cardData.rating}</li>
+          <li class="list-group-item">Cuisine: ${cardData.cuisine[0].name}</li>
+          <li class="list-group-item">Address: ${cardData.address}</li>
+        </ul>
+        <div class="card-body">
+          <a href="${cardData.website}" class="card-link" target="_blank">Visit Website</a>
+        </div>
+      `;
+
+  cardWrapper.appendChild(card);
 }
