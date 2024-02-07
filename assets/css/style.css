@@ -169,6 +169,8 @@ body {
   flex-direction: row;
   padding: 20px;
   background-color: var(--yardleyYellow);
+  border: 10px solid #D62828;
+
 }
 
 /* video */
@@ -195,7 +197,7 @@ body {
   justify-content: right;
   width: 40vw;
   height: 600px;
-  padding-left: 20px;
+  border-left: 20px ;
 }
 
 
