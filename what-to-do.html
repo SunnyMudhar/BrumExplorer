@@ -40,24 +40,31 @@
             </div>
           </div>
         </section>
-        <article class="results">
+        <section class="filters">
           <div class="collapse" id="collapse-result">
             <div class="dining-filters">
               <button class="btn-filter" id="btnTwenty">Get Top 20!</button>
               <button class="btn-filter" id="btnRandom">Get a Random choice</button>
+              <button class="btn-filter" id="btnRetrieve">Retrieve Previous Results</button>
             </div>
           </div>
-          <div id="carousel-results" class="carousel slide" data-bs-ride="carousel">
+        </section>
+        <article class="results">
+          <div id="carousel-results" class="carousel slide" data-bs-interval="false">
             <div class="carousel-inner" id="carousel-container">
+              <div class="carousel-buttons">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-results" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel-results" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-results" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carousel-results" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+          </div>
+          <div class="" id="random-result">
           </div>
         </article>
     </main>

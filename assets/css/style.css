@@ -1,8 +1,5 @@
 :root {
-
   --primaryColor: #D9D9D9;
-  --textColor: #D9D9D9;
-  /*REMOVE FOR PRIMARY*/
   --yardleyYellow: #FCBF49;
   --secondaryColor: #D62828;
   --orange: #F77F00;
@@ -54,9 +51,7 @@ body {
   background-size: cover;
   padding: 20px;
   position: relative;
-
 }
-
 
 /*MAIN*/
 
@@ -100,7 +95,7 @@ body {
 
 /* about Birmingham section */
 .aboutBham {
-  background-image: url(/assets/images/brumi.jpg);
+  background-image: url(../assets/images/brumi.jpg);
   height: 100vh;
   width: auto;
   background-size: cover;
@@ -204,6 +199,9 @@ body {
   background-color: var(--bartleyGreen);
   padding: 25px;
   margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .btn-filter {
@@ -213,12 +211,10 @@ body {
   border-radius: 5px;
   background-color: var(--yardleyYellow);
   border: none;
+  margin: auto;
 }
 
-.btn-filter:hover,
-.btn-filter:focus,
-.btn-filter:active,
-.btn-filter.active {
+.btn-filter:hover {
   color: var(--secondaryColor);
   border-color: var(--orange);
   background-color: var(--orange);
@@ -227,12 +223,10 @@ body {
 /*Carousel*/
 
 #carousel-results {
-  margin-top: 5dvh;
   display: none;
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
+.carousel-control-prev-icon, .carousel-control-next-icon {
   background-color: #003049;
 }
 
@@ -244,25 +238,24 @@ body {
 }
 
 .card-results {
-  width: 30dvh;
+  width: 35dvh;
 }
 
 .card-results .card-img-top {
-  height: 10vw;
+  height: 22vh;
   margin: 0 auto;
 }
 
 .card-results .card-img-top img {
-  max-width: 50%;
-  max-height: 50%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-@media screen and (max-width: 567px) {
-  .card:not(:first-child) {
-    display: none;
-  }
-}
+/*Random Result*/
 
+#random-result {
+  display: none;
+}
 
 /* testimonials sections */
 .row {
@@ -275,7 +268,6 @@ body {
   border-color: var(--secondaryColor);
   border-width: 3px;
 }
-
 
 /* contact */
 
@@ -307,4 +299,18 @@ body {
   color: var(--yardleyYellow);
   text-align: center;
   padding: 5px;
+}
+
+/* media queries*/
+@media screen and (max-width: 1010px) {
+  .dining-filters {
+    flex-direction: column;
+  }
+  .btn-filter {
+    margin: 1dvh;
+  }
+  .card:not(:first-child) {
+      display: none;
+  }
+
 }
