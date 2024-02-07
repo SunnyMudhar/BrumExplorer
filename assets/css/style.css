@@ -1,7 +1,8 @@
 :root {
 
   --primaryColor: #D9D9D9;
-  --textColor: #D9D9D9; /*REMOVE FOR PRIMARY*/
+  --textColor: #D9D9D9;
+  /*REMOVE FOR PRIMARY*/
   --yardleyYellow: #FCBF49;
   --secondaryColor: #D62828;
   --orange: #F77F00;
@@ -28,14 +29,13 @@ body {
 }
 
 .navbar-nav {
-    margin: auto;
+  margin: auto;
 }
 
 .navbar-nav a:hover {
   color: var(--secondaryColor);
   text-decoration: underline;
   transition: all 0.35s;
-
 }
 
 .navbar .container-fluid img {
@@ -62,14 +62,14 @@ body {
 
 /*Banner*/
 .banner-main {
-    display: flex;
-    background-image: url(../images/dining-out.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    align-items: center;
-    justify-content: center;
-    margin-top: -1%;
-    margin-bottom: 0 !important;
+  display: flex;
+  background-image: url(../images/dining-out.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+  margin-top: -1%;
+  margin-bottom: 0 !important;
 }
 
 .hero-text h1 {
@@ -90,13 +90,13 @@ body {
   color: var(--birminghamBlue);
   font-weight: bold
 }
-  
-  .btn {
-    margin-top: 10px;
-    padding: 10px 25px;
-    border-radius: 300px;
-    color: var(--primaryColor);
-  }
+
+.btn {
+  margin-top: 10px;
+  padding: 10px 25px;
+  border-radius: 300px;
+  color: var(--primaryColor);
+}
 
 /* about Birmingham section */
 .aboutBham {
@@ -143,67 +143,124 @@ body {
   padding: 10px;
 }
 
+/* about birmingham hero */
+
+.about-hero {
+  background-image: url(/assets/images/about-hero.jpg);
+  height: 100vh;
+  width: 98.9vw;
+}
+
+
+.about-hero h1 {
+  color: var(--yardleyYellow);
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 70px;
+
+}
+
+
+/* about video and currency convertor */
+.row-about {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  background-color: var(--yardleyYellow);
+}
+
+/* video */
+.columnA {
+  display: flex;
+  justify-content: left;
+  border-color: var(--secondaryColor);
+  border-width: 20px;
+  flex: 1;
+  flex-direction: row;
+}
+
+.columnA iframe {
+  height: 600px;
+  width: 48vw;
+}
+
+/* currency convertor background image */
+
+.columnA img {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: right;
+  width: 40vw;
+  height: 600px;
+  padding-left: 20px;
+}
+
+
 /*Search Filters*/
 .dining-filters {
-    background-color: var(--bartleyGreen);
-    padding: 25px;
-    margin: auto;
+  background-color: var(--bartleyGreen);
+  padding: 25px;
+  margin: auto;
 }
 
 .btn-filter {
-    padding: 1vh;
-    text-transform: uppercase;
-    color: white;
-    border-radius: 5px;
-    background-color: var(--yardleyYellow);
-    border: none;
+  padding: 1vh;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 5px;
+  background-color: var(--yardleyYellow);
+  border: none;
 }
 
 .btn-filter:hover,
 .btn-filter:focus,
 .btn-filter:active,
 .btn-filter.active {
-    color: var(--secondaryColor);
-    border-color: var(--orange);
-    background-color: var(--orange);
+  color: var(--secondaryColor);
+  border-color: var(--orange);
+  background-color: var(--orange);
 }
 
 /*Carousel*/
 
 #carousel-results {
-    margin-top: 5dvh;
-    display: none;
+  margin-top: 5dvh;
+  display: none;
 }
 
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: #003049;
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #003049;
 }
 
 /*Cards*/
 
 .carousel-item .card-wrapper {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .card-results {
-    width: 30dvh;
+  width: 30dvh;
 }
 
 .card-results .card-img-top {
-    height: 10vw;
-    margin: 0 auto;
+  height: 10vw;
+  margin: 0 auto;
 }
 
 .card-results .card-img-top img {
-    max-width: 50%;
-    max-height: 50%;
+  max-width: 50%;
+  max-height: 50%;
 }
 
 @media screen and (max-width: 567px) {
-    .card:not(:first-child) {
-        display: none;
-    }
+  .card:not(:first-child) {
+    display: none;
+  }
 }
 
 
@@ -243,7 +300,7 @@ body {
   text-decoration: underline;
   transition: all 0.35s;
 }
-  
+
 /* footer */
 .footer {
   background-color: var(--secondaryColor);
