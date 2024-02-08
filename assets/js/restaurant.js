@@ -2,16 +2,16 @@ var topTwentyBtn = document.getElementById('btnTwenty');
 var randomBtn = document.getElementById('btnRandom');
 var retrieveResultsBtn = document.getElementById('btnRetrieve');
 var resultsCarousel = document.getElementById('carousel-results');
-var resultsRandom = document.getElementById('random-result');
 var carouselContainer = document.getElementById('carousel-container');
+var randomResultsContainer = document.getElementById('random-result-container');
+var loadingPrompt = document.getElementById('loading-text');
 
 var numberOfCards    = 0;
-var delay            = 4000;
+var delay            = 5000;
 var previousTask     = "";
 var setActive        = false;
 var restaurantObject = {};
 var cardWrapper      = "";
-
 
 topTwentyBtn.addEventListener('click', () => displayRestaurants("topTwenty"));
 randomBtn.addEventListener('click', () => displayRestaurants("random"));
@@ -20,6 +20,7 @@ retrieveResultsBtn.addEventListener('click', () => displayRestaurants("retrieveR
 // Main function that controls which function to trigger based off of the button pressed
 function displayRestaurants(filter) {
 
+  resetCanvas();
   previousTask = filter;
 
   if (filter === "retrieveResults") {
@@ -27,26 +28,32 @@ function displayRestaurants(filter) {
     delay = 0;
   } else {
     getAPIData();
+    loadingPrompt.style.display = "flex";
   }
 
   // Delay function to display API data
   setTimeout( () => {
-
     switch (previousTask) {
 
       case "topTwenty":
         getTopTwenty();
         break;
-
+  
       case "random":
         getRandom();
         break;
-
+  
       default:
         console.error("Invalid Input for parm \"filter\"");
-
     }
+    loadingPrompt.style.display = "none";
   }, delay)
+}
+
+function resetCanvas() {
+  resultsCarousel.style.display = "none";
+  loadingPrompt.style.display = "none";
+  clearCards();
 }
 
 /*
@@ -61,7 +68,7 @@ function getAPIData() {
     method: 'POST',
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
-      'X-RapidAPI-Key': '67d23fb0b5mshea67329f6a1d2c2p1c807ejsncdbdea6529d3',
+      'X-RapidAPI-Key': '5c43c68212msh2ed3338caf5ec95p174379jsn4c850fc9b80a',
       'X-RapidAPI-Host': 'restaurants222.p.rapidapi.com'
     },
     body: new URLSearchParams({
@@ -83,7 +90,7 @@ function getAPIData() {
     })
     .then(data => {
       restaurantObject = data;
-      saveData(restaurantObject);
+      saveData();
     })
     .catch(error => {
       console.error('Fetch error:', error);
@@ -92,33 +99,31 @@ function getAPIData() {
 
 /*
 *****************************************
-*         LOCAL STORAGE SECTION         *
+*            LOCAL STORAGE              *
 *****************************************
 */
 
-function saveData(obj) {
-  console.log("data saved");
-  localStorage.setItem("restaurantObject", JSON.stringify(obj));
+function saveData() {
+  console.log(`${previousTask} data saved`);
+  localStorage.setItem("restaurantObject", JSON.stringify(restaurantObject));
   localStorage.setItem("previousTask", previousTask);
 }
 
 function checkLocalStorage() {
-  if (!localStorage.getItem("previousTask")) return false;  //Change to show a modal
+  if (!localStorage.getItem("previousTask")) createAlertModal("No previous search found!");
   restaurantObject = JSON.parse(localStorage.getItem("restaurantObject"));
   previousTask = localStorage.getItem("previousTask");
 }
 
 /*
 **********************************************
-*         PAGE FUNCTIONALITY SECTION         *
+*             PAGE FUNCTIONALITY             *
 **********************************************
 */
 
 function getTopTwenty() {
 
   resultsCarousel.style.display = "block";
-
-  console.log('Response data:', restaurantObject);
 
   if (restaurantObject && restaurantObject.results && restaurantObject.results.data && Array.isArray(restaurantObject.results.data)) {
     // Create and append cards for each restaurant
@@ -130,21 +135,30 @@ function getTopTwenty() {
 
 function getRandom() {
 
-  resultsRandom.style.display = "block";
+  randomResultsContainer.style.display = "block";
 
-  console.log('Response data:', restaurantObject);
+  if (restaurantObject.results) {    
+    var rnd = Math.floor(Math.random() * restaurantObject.results.data.length)
+    restaurantObject = restaurantObject.results.data[rnd];  // Overwrite local restaurant object with new random choice
+    saveData();
+  }
   
-  var rnd = Math.floor(Math.random() * restaurantObject.results.data.length)
-  var restaurant = restaurantObject.results.data[rnd];
-  
-  //display one card for random
-  createCard(restaurant, "single");
+  // Display one card for random
+  createCard(restaurantObject, "single");
 }
+
+/*
+**********************************************
+*         CREATE CARD FUNCTIONALITY          *
+**********************************************
+*/
 
 function createCard(cardData, type) {
 
   if(type === "carousel") {
+
     if(numberOfCards === 0) {
+
       const carouselItem = document.createElement('div');
       carouselItem.classList.add('carousel-item');
         
@@ -160,14 +174,17 @@ function createCard(cardData, type) {
         
       carouselItem.appendChild(cardWrapper);
       numberOfCards = 4;  // Create 4 cards
+
     }
+
   } else {
            
     cardWrapper = document.createElement('div');
-    cardWrapper.classList.add('card-wrapper', 'row');
+    cardWrapper.classList.add('card-wrapper', 'row', 'card-single');
         
-    resultsRandom.appendChild(cardWrapper);
+    randomResultsContainer.appendChild(cardWrapper);
     numberOfCards = 1;
+
   }
 
   numberOfCards--;
@@ -181,7 +198,7 @@ function createCard(cardData, type) {
         <img src="${imageUrl}" class="card-img-top" alt="${cardData.name}">
         <div class="card-body">
           <h5 class="card-title">${cardData.name}</h5>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#${cardData.location_id}-modal">
+          <button type="button" class="btn btn-primary btn-rounded" data-bs-toggle="modal" data-bs-target="#${cardData.location_id}-modal">
             Description
           </button>
           <!-- Modal -->
@@ -190,13 +207,13 @@ function createCard(cardData, type) {
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="restaurantModalLabel">${cardData.name} Description</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button btn-rounded" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   ${cardData.description}
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary btn-rounded" data-bs-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
@@ -213,4 +230,9 @@ function createCard(cardData, type) {
       `;
 
   cardWrapper.appendChild(card);
+}
+
+function clearCards() {
+  carouselContainer.innerHTML = '';
+  randomResultsContainer.innerHTML = '';
 }

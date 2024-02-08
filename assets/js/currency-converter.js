@@ -15,12 +15,8 @@ document.getElementById('convert').addEventListener('click', function () {
 
 	fetch(url, options)
 			.then(response => response.json())
-			.then(data => {
-					console.log(data); 
-					document.getElementById('result').innerText = `${amount} ${from} = ${data.result.convertedAmount} ${to}`;
+			.then(data => { 
+					document.getElementById('result').innerText = `${amount} ${from} = ${Math.round(data.result.convertedAmount * 100) / 100} ${to}`;
 			})
 			.catch(error => console.error('Error:', error));
 });
-
-
-
