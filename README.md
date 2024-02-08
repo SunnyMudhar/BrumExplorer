@@ -11,11 +11,11 @@ Users can also chose places to dine with a click of a button that displays top 2
 
 ### Brum Explorer has three main sections:
 
- 1.About Birmingham: shows the user a short and video to expand their 
+ 1. About Birmingham: shows the user a short and video to expand their knowledge of Birmingham. Next to the video we have a currency converter for our overseas friends looking to visit Birmingham.
  ###
- 2.Dining: discover many dining options from different cuisines.
+ 2. Dining: discover many dining options from different cuisines.
  ###
- 3.Currency Converter: easily convert from EUR, USD, JPY to GBP.
+ 3. Currency Converter: easily convert from EUR, USD, JPY to GBP.
 
 Brum Explorer was creater to address the needs of visitors. It aims to simplify and enhance a tourists overall experience in Birmignham. This website was developed through collaborative effort that offers a user friendly platform as well as practical tools. 
 
@@ -55,7 +55,7 @@ Using Figma, we were able to wireframe out our design ideas. Providing our desig
 
 ## Installation
 
-This single static website can be deployed either locally or to a webserver. With the included "index.html" file containing the main code for the website, and the accompanying "style.css" stylesheet and "script.js" script file. Alternatively, the website can be found on the GitHub Pages link below.
+This website can be deployed either locally or to a webserver. With the included "index.html" file containing the home page for the website along with several links to resources used to create the site such as Bootstrap, and the accompanying "style.css" stylesheet. The website also comes with several additional essential files, such as the "what-to-do.html", "about-birmingham.html" and essential script files that can be found within the assets/js folder. Alternatively, the website can be found on the GitHub Pages link below.
 
 Designed primarily for a desktop experience, the site can be accessed on small screen sizes, with a minimum screensize of 600px horizontally. Please keep this in mind when accessing the site on your device.
 
