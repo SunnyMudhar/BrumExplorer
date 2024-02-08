@@ -67,28 +67,30 @@
             <iframe class="col-sm-12 col-md-12 col-lg-6" src="https://www.youtube.com/embed/Yd75ADasBoo?si=UJ5zRZeowc369V3a" title="YouTube video player"></iframe>
           </div>
           <div class="col-sm-12 col-md-12 col-lg-6" id="column-currency-converter">
-            <h2>Currency Converter</h2>
-            <br><br>
-            <p>Looking to travel from overseas?<br>Why not check the current exchange rate for your currency?</p>
-            <br><br>
-            <label for="amount">Amount:</label>
-            <input type="text" id="amount" value="10">
-            <br><br>
-              <label for="fromCurrency">From Currency:</label>
-              <select id="fromCurrency">
-                  <option value="EUR">EUR</option>
-                  <option value="USD">USD</option>
-                  <option value="JPY">JPY</option>
-              </select>
+            <div class="converter-container">
+              <h2>Currency Converter</h2>
               <br><br>
-              <label for="toCurrency">To Currency:</label>
-              <select id="toCurrency">
-                  <option value="GBP">GBP</option>
-              </select>
+              <p>Looking to travel from overseas?<br>Why not check the current exchange rate for your currency?</p>
               <br><br>
-              <button class="btn btn-outline btn-xl btn-rounded" id="convert">CONVERT</button>
+              <label for="amount">Amount:</label>
+              <input type="text" id="amount" value="10">
               <br><br>
-              <div id="result">Result:</div>
+                <label for="fromCurrency">From Currency:</label>
+                <select id="fromCurrency">
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                    <option value="JPY">JPY</option>
+                </select>
+                <br><br>
+                <label for="toCurrency">To Currency:</label>
+                <select id="toCurrency">
+                    <option value="GBP">GBP</option>
+                </select>
+                <br><br>
+                <button class="btn btn-outline btn-xl btn-rounded" id="convert">CONVERT</button>
+                <br><br>
+                <div id="result">Result:</div>
+            </div>
           </div>
         </div>
       </div>

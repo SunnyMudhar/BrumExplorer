@@ -8,7 +8,7 @@ document.getElementById('convert').addEventListener('click', function () {
 	const options = {
 			method: 'GET',
 			headers: {
-					'X-RapidAPI-Key': '67d23fb0b5mshea67329f6a1d2c2p1c807ejsncdbdea6529d3',
+					'X-RapidAPI-Key': 'fed5220734mshf274d8836b368c9p12bc39jsn336134dee358',
 					'X-RapidAPI-Host': 'currency-converter18.p.rapidapi.com'
 			}
 	};

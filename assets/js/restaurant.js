@@ -69,7 +69,7 @@ function getAPIData() {
     method: 'POST',
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
-      'X-RapidAPI-Key': '5c43c68212msh2ed3338caf5ec95p174379jsn4c850fc9b80a',
+      'X-RapidAPI-Key': 'fed5220734mshf274d8836b368c9p12bc39jsn336134dee358',
       'X-RapidAPI-Host': 'restaurants222.p.rapidapi.com'
     },
     body: new URLSearchParams({
