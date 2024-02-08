@@ -4,7 +4,6 @@
   --secondaryColor: #D62828;
   --orange: #F77F00;
   --birminghamBlue: #003049;
-  --bartleyGreen: #76DA6E;
 }
 
 body {
@@ -198,7 +197,7 @@ body {
 /*Search Filters*/
 
 .dining-filters {
-  background-color: var(--bartleyGreen);
+  background-color: var(--birminghamBlue);
   padding: 25px;
   margin: auto;
   display: flex;
