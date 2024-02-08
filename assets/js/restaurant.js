@@ -2,9 +2,10 @@ var topTwentyBtn = document.getElementById('btnTwenty');
 var randomBtn = document.getElementById('btnRandom');
 var retrieveResultsBtn = document.getElementById('btnRetrieve');
 var resultsCarousel = document.getElementById('carousel-results');
-var carouselContainer = document.getElementById('carousel-container');
+var carouselContainer = document.getElementById('carousel-item-container');
 var randomResultsContainer = document.getElementById('random-result-container');
-var loadingPrompt = document.getElementById('loading-text');
+var loadingPrompt = document.getElementById('loading-prompt');
+var loadingText = document.getElementById('loading-text');
 
 var numberOfCards    = 0;
 var delay            = 5000;
@@ -20,7 +21,6 @@ retrieveResultsBtn.addEventListener('click', () => displayRestaurants("retrieveR
 // Main function that controls which function to trigger based off of the button pressed
 function displayRestaurants(filter) {
 
-  resetCanvas();
   previousTask = filter;
 
   if (filter === "retrieveResults") {
@@ -28,11 +28,12 @@ function displayRestaurants(filter) {
     delay = 0;
   } else {
     getAPIData();
-    loadingPrompt.style.display = "flex";
+    loadingText.style.display = "flex";
   }
 
   // Delay function to display API data
   setTimeout( () => {
+    resetCanvas();
     switch (previousTask) {
 
       case "topTwenty":
