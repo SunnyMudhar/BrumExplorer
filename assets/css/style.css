@@ -1,5 +1,5 @@
 :root {
-  --primaryColor: #D9D9D9;
+  --textColor: #ffffff;
   --yardleyYellow: #FCBF49;
   --secondaryColor: #D62828;
   --orange: #F77F00;
@@ -11,12 +11,13 @@ body {
   height: 100%;
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
-  color: var(--birminghamBlue);
   text-align: justify;
   line-height: 20px;
+  background-color: var(--yardleyYellow);
 }
 
 /* Navbar*/
+
 .navbar .container-fluid {
   background-color: var(--yardleyYellow);
 }
@@ -26,12 +27,13 @@ body {
 }
 
 .navbar-nav {
+  text-decoration: none;
   margin: auto;
 }
 
 .navbar-nav a:hover {
+  text-decoration: none;
   color: var(--secondaryColor);
-  text-decoration: underline;
   transition: all 0.35s;
 }
 
@@ -39,7 +41,36 @@ body {
   height: 70px;
 }
 
-/* hero image styling */
+/*MAIN*/
+
+/*Banner*/
+
+#what-to-do-banner {
+  background-image: url(../images/dining-out.jpg);
+}
+
+#about-birmingham-banner {
+  background-image: url(../images/about-hero.jpg);
+  max-height: 75%;
+}
+
+.banner-main {
+  display: flex;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--textColor);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 0 !important;
+  text-shadow:  1px 1px 2px var(--birminghamBlue);
+}
+
+.banner-main h1 {
+  padding: 10px;
+}
+
+/*Hero*/
 
 .hero-text {
   background-image: url(/assets/images/about.jpg);
@@ -51,20 +82,7 @@ body {
   background-size: cover;
   padding: 20px;
   position: relative;
-}
-
-/*MAIN*/
-
-/*Banner*/
-.banner-main {
-  display: flex;
-  background-image: url(../images/dining-out.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  align-items: center;
-  justify-content: center;
-  margin-top: -1%;
-  margin-bottom: 0 !important;
+  text-align: center;
 }
 
 .hero-text h1 {
@@ -73,29 +91,25 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--birminghamBluen);
+  color: var(--textColor);
+  text-shadow:  1px 1px 2px var(--birminghamBlue);
   font-weight: bold;
 }
 
 .hero-text p {
+  padding-top: 5vh;
   position: absolute;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--birminghamBlue);
+  color: var(--textColor);
+  text-shadow:  1px 1px 2px var(--birminghamBlue);
   font-weight: bold
 }
 
-.btn {
-  margin-top: 10px;
-  padding: 10px 25px;
-  border-radius: 300px;
-  color: var(--primaryColor);
-}
-
-/* about Birmingham section */
-.aboutBham {
-  background-image: url(../assets/images/brumi.jpg);
+/* second hero Birmingham section */
+.second-hero { 
+  background-image: url(/assets/images/brumi.jpg);
   height: 100vh;
   width: auto;
   background-size: cover;
@@ -113,29 +127,18 @@ body {
   margin-right: auto;
   color: var(--yardleyYellow);
   font-weight: bold;
+  text-shadow:  1px 1px 2px var(--birminghamBlue);
 }
 
 .section-heading h2 {
   text-align: center;
   padding: 10px;
   height: -50vh;
-
 }
 
 .section-heading p {
   text-align: center;
   padding-bottom: 10px;
-}
-
-.section-heading button {
-
-  width: 100px;
-  height: 40px;
-  display: inline-block;
-  position: relative;
-  background-color: var(--orange);
-  color: var(--birminghamBlue);
-  padding: 10px;
 }
 
 /* about birmingham hero */
@@ -154,7 +157,6 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-weight: 70px;
-
 }
 
 
@@ -163,17 +165,14 @@ body {
   display: flex;
   flex-direction: row;
   padding: 20px;
-  background-color: var(--yardleyYellow);
 }
 
 /* video */
+
 .columnA {
   display: flex;
-  justify-content: left;
-  border-color: var(--secondaryColor);
-  border-width: 20px;
-  flex: 1;
-  flex-direction: row;
+  justify-content: center;
+  margin: auto;
 }
 
 .columnA iframe {
@@ -181,20 +180,13 @@ body {
   width: 48vw;
 }
 
-/* currency convertor background image */
-
-.columnA img {
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  justify-content: right;
-  width: 40vw;
-  height: 600px;
-  padding-left: 20px;
+#column-currency-converter {
+  text-align: center;
+  margin: auto;
 }
 
-
 /*Search Filters*/
+
 .dining-filters {
   background-color: var(--bartleyGreen);
   padding: 25px;
@@ -204,7 +196,41 @@ body {
   align-items: center;
 }
 
-.btn-filter {
+.dining-filters button {
+  margin: 1vh;
+}
+
+.loading-prompt {
+  display: none;
+  padding-top: 10vh;
+  justify-content: center;
+  align-content: center;
+}
+
+/*Buttons*/
+
+.btn-rounded {
+  margin-top: 10px;
+  padding: 10px 25px;
+  border-radius: 300px;
+  background-color: transparent;
+  border-color: var(--birminghamBlue); 
+  color: var(--birminghamBlue);
+}
+
+.btn-rounded:hover {
+  background-color: var(--birminghamBlue);
+  border-color: transparent !important;
+  color: var(--textColor);
+}
+
+.btn-primary:active {
+  background-color: transparent !important;
+  border-color: var(--birminghamBlue) !important;
+  color: #003049 !important;
+}
+
+.btn-orange {
   padding: 1vh;
   text-transform: uppercase;
   color: white;
@@ -214,13 +240,19 @@ body {
   margin: auto;
 }
 
-.btn-filter:hover {
-  color: var(--secondaryColor);
+.btn-orange:hover {
+  transition: all 0.25s;
+  color: var(--yardleyYellow);
   border-color: var(--orange);
   background-color: var(--orange);
 }
 
 /*Carousel*/
+
+.results {
+  max-width: 100%;
+  max-height: 100%;
+}
 
 #carousel-results {
   display: none;
@@ -233,6 +265,11 @@ body {
 /*Cards*/
 
 .carousel-item .card-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.card-single {
   display: flex;
   justify-content: center;
 }
@@ -259,9 +296,7 @@ body {
 
 /* testimonials sections */
 .row {
-  background-color: var(--yardleyYellow);
   padding: 20px;
-  margin-right: 0;
 }
 
 .card {
@@ -270,10 +305,6 @@ body {
 }
 
 /* contact */
-
-.contact-section {
-  background-color: var(--yardleyYellow);
-}
 
 .text-uppercase:hover {
   color: var(--orange);
@@ -299,10 +330,16 @@ body {
   color: var(--yardleyYellow);
   text-align: center;
   padding: 5px;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
 }
 
 /* media queries*/
 @media screen and (max-width: 1010px) {
+  #btn-dining {
+    color: var(--textColor);
+  }
   .dining-filters {
     flex-direction: column;
   }
