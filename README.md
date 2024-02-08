@@ -1,4 +1,9 @@
-# Project BrumExplorer 
+# Project BrumExplorer
+
+<p align="center">
+  <img src="/assets/images/brumlogo.png">
+</p>
+
 
 ## Description
 Brum Explorer is a website designed to assist tourists visiting Birmingham, United Kingdom. This project was developed by team Jabba(script)The Hutt and provides essential information and tools that inhance a tourists experience in the city.
@@ -17,7 +22,9 @@ Brum Explorer was creater to address the needs of visitors. It aims to simplify 
 
 Using Figma, we were able to wireframe out our design ideas. Providing our design team with a template to build the foundations for our site.
 
-![Main screen wireframe](assets/images/wireframe.png)
+<p align="center">
+  <img src="/assets/images/wireframe.png" alt="Wireframe of home page">
+</p>
 
 ## Features
 
@@ -29,15 +36,21 @@ Using Figma, we were able to wireframe out our design ideas. Providing our desig
 
 ### Home Page
 
-![Main screen wireframe](assets/images/home-page.png)
+<p align="center">
+  <img src="/assets/images/home-page.png" alt="Home page">
+</p>
 
 ### What to Do
 
-![Main screen wireframe](assets/images/what-to-do.png)
+<p align="center">
+  <img src="/assets/images/what-to-do.png" alt="What to Do page">
+</p>
 
 ### About Birmingham
 
-![Main screen wireframe](assets/images/about-birmingham.png)
+<p align="center">
+  <img src="/assets/images/about-birmingham.png" alt="About Birmingham page">
+</p>
 
 ## Installation
 
@@ -65,7 +78,7 @@ Suniel Mudhar
 ###
 Tayyba Afzal
 ###
-Olu Ola
+Olumide Olayeni
 ###
 Zainab Touati
 
