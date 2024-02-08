@@ -298,6 +298,10 @@ body {
   max-height: 100%;
 }
 
+.list-group-item  {
+  background-color: #EAE2B7 !important;
+}
+
 /*Random Result*/
 
 #random-result {
@@ -312,6 +316,7 @@ body {
 .card {
   border-color: var(--secondaryColor);
   border-width: 3px;
+  background-color: #EAE2B7 !important;
 }
 
 /* contact */
