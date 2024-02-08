@@ -6,7 +6,8 @@
 
 
 ## Description
-Brum Explorer is a website designed to assist tourists visiting Birmingham, United Kingdom. This project was developed by team Jabba(script)The Hutt and provides essential information and tools that inhance a tourists experience in the city.
+Brum Explorer is a website designed to assist tourists visiting Birmingham, United Kingdom. This project was developed by team Jabba(script)The Hutt and provides essential information and tools that inhance a tourists experience in the city. The website allows users to check the coversion rates for Japannese yen, Us dollars and Euros with plans to add more currencies in future.
+Users can also chose places to dine with a click of a button that displays top 20 restaurants categorised by their public rating. A random selection option is also avaialable to users that want might struggle with too many options.
 
 ### Brum Explorer has three main sections:
 
