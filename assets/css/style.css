@@ -73,7 +73,7 @@ body {
 /*Hero*/
 
 .hero-text {
-  background-image: url(/assets/images/about.jpg);
+  background-image: url(../images/about.jpg);
   object-fit: cover;
   height: 100vh;
   width: 100%;
@@ -109,7 +109,7 @@ body {
 
 /* second hero Birmingham section */
 .second-hero { 
-  background-image: url(/assets/images/brumi.jpg);
+  background-image: url(../images/brumi.jpg);
   height: 100vh;
   width: auto;
   background-size: cover;
@@ -177,12 +177,13 @@ body {
 
 .columnA iframe {
   height: 600px;
-  width: 48vw;
+  width: 100%;
 }
 
 #column-currency-converter {
   text-align: center;
   margin: auto;
+  padding: 5vh;
 }
 
 /*Search Filters*/
@@ -200,9 +201,14 @@ body {
   margin: 1vh;
 }
 
-.loading-prompt {
+#loading-text {
   display: none;
-  padding-top: 10vh;
+  padding-top: 5vh;;
+}
+
+.loading-prompt {
+  display: flex;
+  padding-bottom: 52vh;
   justify-content: center;
   align-content: center;
 }
@@ -248,11 +254,6 @@ body {
 }
 
 /*Carousel*/
-
-.results {
-  max-width: 100%;
-  max-height: 100%;
-}
 
 #carousel-results {
   display: none;
@@ -332,7 +333,6 @@ body {
   padding: 5px;
   width: 100%;
   bottom: 0;
-  position: fixed;
 }
 
 /* media queries*/
