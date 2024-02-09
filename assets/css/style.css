@@ -188,7 +188,7 @@ body {
 }
 
 .converter-container {
-  width: 50%;
+  width: 50dvh;
   padding: 25px;
   border-radius: 50px;
   background-color: #EAE2B7;
@@ -214,7 +214,7 @@ body {
   padding-top: 5vh;;
 }
 
-.loading-prompt {
+.loaded-content {
   display: flex;
   padding-bottom: 52vh;
   justify-content: center;
@@ -259,6 +259,18 @@ body {
   color: var(--yardleyYellow);
   border-color: var(--orange);
   background-color: var(--orange);
+}
+
+/*Results*/
+
+.results {
+  text-align: center;
+}
+
+#results-title {
+  display: none;
+  padding-top: 5dvh;
+  color: #003049;
 }
 
 /*Carousel*/

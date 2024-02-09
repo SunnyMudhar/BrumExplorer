@@ -4,8 +4,9 @@ var retrieveResultsBtn = document.getElementById('btnRetrieve');
 var resultsCarousel = document.getElementById('carousel-results');
 var carouselContainer = document.getElementById('carousel-item-container');
 var randomResultsContainer = document.getElementById('random-result-container');
-var loadingPrompt = document.getElementById('loading-prompt');
+var loadedContentCanvas = document.getElementById('loaded-content');
 var loadingText = document.getElementById('loading-text');
+var resultsTitle = document.getElementById('results-title');
 
 var numberOfCards    = 0;
 var delay            = 5000;
@@ -18,43 +19,38 @@ topTwentyBtn.addEventListener('click', () => displayRestaurants("topTwenty"));
 randomBtn.addEventListener('click', () => displayRestaurants("random"));
 retrieveResultsBtn.addEventListener('click', () => displayRestaurants("retrieveResults"));
 
+document.addEventListener('DOMContentLoaded', () => displayRestaurants("initialStart"));
+
 // Main function that controls which function to trigger based off of the button pressed
-function displayRestaurants(filter) {
+// Will also pre-load content onto the screen
+async function displayRestaurants(filter) {
 
   previousTask = filter;
 
-  if (filter === "retrieveResults") {
-    checkLocalStorage();
-    delay = 0;
-  } else {
-    getAPIData();
-    loadingText.style.display = "flex";
+  loadingScreen();
+  const results = filter === "retrieveResults" || filter === "initialStart" ? await checkLocalStorage(filter) : await getAPIData();
+  setResultsCanvas(filter);
+
+  restaurantObject = results;
+
+  switch (previousTask) {
+
+    case "topTwenty":
+      saveData();
+      getTopTwenty();
+      break;
+  
+    case "random":
+      getRandom();
+      break;
+    
+    case "initialStart":
+      getTopTwenty();
+      break;
+
+    default:
+      console.error("Invalid Input for parm \"filter\"");
   }
-
-  // Delay function to display API data
-  setTimeout( () => {
-    resetCanvas();
-    switch (previousTask) {
-
-      case "topTwenty":
-        getTopTwenty();
-        break;
-  
-      case "random":
-        getRandom();
-        break;
-  
-      default:
-        console.error("Invalid Input for parm \"filter\"");
-    }
-    loadingPrompt.style.display = "none";
-  }, delay)
-}
-
-function resetCanvas() {
-  resultsCarousel.style.display = "none";
-  loadingPrompt.style.display = "none";
-  clearCards();
 }
 
 /*
@@ -63,7 +59,7 @@ function resetCanvas() {
 *******************************
 */
 
-function getAPIData() {
+async function getAPIData() {
   const url = 'https://restaurants222.p.rapidapi.com/search';
   const options = {
     method: 'POST',
@@ -80,22 +76,13 @@ function getAPIData() {
     })
   };
 
-  fetch(url, options)
-    .then(response => {
-      // checked to make sure there is a promise
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      // converted the result to json
-      return response.json();
-    })
-    .then(data => {
-      restaurantObject = data;
-      saveData();
-    })
-    .catch(error => {
-      console.error('Fetch error:', error);
-    });
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Fetch error: ", error);
+  }
 }
 
 /*
@@ -110,10 +97,17 @@ function saveData() {
   localStorage.setItem("previousTask", previousTask);
 }
 
-function checkLocalStorage() {
-  if (!localStorage.getItem("previousTask")) createAlertModal("No previous search found!");
-  restaurantObject = JSON.parse(localStorage.getItem("restaurantObject"));
+async function checkLocalStorage(task) {
+  if (!JSON.parse(localStorage.getItem("restaurantObject"))) {
+    if (task === "retrieveResults") {
+      createAlertModal("No previous search found!");
+      return;
+    } else if (task === "initialStart") {
+      return await getAPIData();
+    }
+  }
   previousTask = localStorage.getItem("previousTask");
+  return JSON.parse(localStorage.getItem("restaurantObject"));
 }
 
 /*
@@ -121,6 +115,38 @@ function checkLocalStorage() {
 *             PAGE FUNCTIONALITY             *
 **********************************************
 */
+
+function loadingScreen() {
+  resultsCarousel.style.display = "none";
+  loadingText.style.display = "flex";
+  loadedContentCanvas.style.display = "flex";
+  resultsTitle.style.display = "none";
+  clearCards();
+}
+
+function setResultsCanvas(task) {
+
+  loadedContentCanvas.style.display = "none";
+  resultsTitle.style.display = "block";
+
+  var titleText = "";
+  
+  switch (task) {
+    case "topTwenty":
+      titleText = "Top 20 Restaurants in Birmingham";
+      break;
+    case "random":
+      titleText = "Random Restaurant";
+      break;
+    case "retrieveResults":
+      titleText = "Your Previous Search";
+      break;
+    case "initialStart":
+      titleText = "Have a look at what Birmingham has to offer!"
+  }
+
+  resultsTitle.textContent = titleText;
+}
 
 function getTopTwenty() {
 
