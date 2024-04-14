@@ -75,7 +75,7 @@ Brum Explorer:
 
 ## Credits
 ### Collaborators:
-Suniel Mudhar
+Sunny Mudhar
 ###
 Tayyba Afzal
 ###
@@ -98,7 +98,7 @@ https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_dropdown&sta
 
 ### GitHub Pages:
 
-[GitHub Pages](https://sunielmudhar.github.io/BrumExplorer/)
+[GitHub Pages](https://sunnymudhar.github.io/BrumExplorer/)
 ###
 [Deployment Link](https://github.com/sunielmudhar/BrumExplorer)
 
