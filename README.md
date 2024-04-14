@@ -100,7 +100,7 @@ https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_dropdown&sta
 
 [GitHub Pages](https://sunnymudhar.github.io/BrumExplorer/)
 ###
-[Deployment Link](https://github.com/sunielmudhar/BrumExplorer)
+[Deployment Link](https://github.com/sunnymudhar/BrumExplorer)
 
 ## License
 BrumExplorer is licensed by MIT License.
